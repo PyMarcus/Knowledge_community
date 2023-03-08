@@ -35,7 +35,7 @@
         <section class="container-fluid bg-dark text-light w-100 card vh-100 col-md-6">
                     {% bootstrap_messages %}
         <form class="form card-body d-flex flex-column align-items-center  mx-auto my-auto w-75"
-              action="{% url 'login' %}"
+              action="{% url 'register' %}"
               method="post"
               autocomplete="off">
             {% csrf_token %}
