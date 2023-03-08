@@ -14,3 +14,9 @@ A simple platform to share knowledge.
     
     
 ![image](https://user-images.githubusercontent.com/88283829/223672725-37ddc4c5-3acb-453b-b126-1dd19cefd654.png)
+
+
+
+    alerts ever
+
+![image](https://user-images.githubusercontent.com/88283829/223673890-843e873c-5705-4da4-ac3d-7858567b56fc.png)
