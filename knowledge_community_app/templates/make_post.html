@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{% static 'images/brain_icon.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
-    <title>Knowledge Community | Register</title>
+    <title>Knowledge Community | Make Post</title>
 
     {% bootstrap_css %}
 </head>
@@ -27,7 +27,7 @@
                         hidden
 ">
             <p class="display-1 my-auto p-3">
-                In everything we do, we follow something new.
+                The educator is eternalized in each being he educates.
             </p>
         </section>
 
@@ -35,22 +35,23 @@
         <section class="container-fluid bg-dark text-light w-100 card vh-100 col-md-6">
                     {% bootstrap_messages %}
         <form class="form card-body d-flex flex-column align-items-center  mx-auto my-auto w-75"
-              action="{% url 'register' %}"
+              action="{% url 'make_post' %}"
               method="post"
-              autocomplete="off">
+              autocomplete="off"
+              enctype="multipart/form-data"
+        >
             {% csrf_token %}
             <div class="my-auto w-100">
-                {% bootstrap_form form %}
+                 {% bootstrap_form form %}
                  {% buttons %}
-                 <button type="submit" class="btn mt-2 personalizated w-100 font-weight-bold">Register</button>
+                 <button type="submit" class="btn mt-2 personalizated w-100 font-weight-bold">Post</button>
                 {% endbuttons %}
-                <a href="{% url 'login' %}" class="m-0 d-flex justify-content-end register_link text-white">
-                    Do you have an account yet? [Sign in]</a>
+                <a href="{% url 'index' %}" class="m-0 d-flex justify-content-end register_link text-white">
+                    Back to posts</a>
             </div>
         </form>
         </section>
     </div>
-
     {% bootstrap_javascript jquery='full' %}
 </body>
 </html>

@@ -4,15 +4,37 @@ from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
 from .forms import UserLoginForm, UserLoginModelForm, UserRegisterModelForm, UserRegisterForm
 from .models import User
+from .models import Posts
+from .forms import PostForm, PostModelForm
 
 
 LOGGED: bool = False
 
 
 def index(request: HttpRequest) -> HttpResponse:
-    if LOGGED:
-        return render(request, 'index.html')
-    return redirect('login')
+    #if LOGGED:
+        #return render(request, 'index.html')
+    #return redirect('login')
+    posts = Posts.objects.all()
+    context = {
+        "posts": posts
+    }
+    return render(request, 'index.html', context)
+
+
+def make_post(request: HttpRequest) -> HttpResponse:
+    if request.method == "POST":
+        form = PostModelForm(request.POST, request.FILES)
+        if form.is_valid():
+            messages.success(request, "Thank you to share!")
+            form.save()
+        else:
+            messages.error(request, "Please, check your data!")
+    form2: PostForm = PostForm()
+    context: Dict[str, PostForm | PostModelForm] = {
+        "form": form2
+    }
+    return render(request, 'make_post.html', context)
 
 
 def login(request: HttpRequest) -> HttpResponse:

@@ -36,7 +36,7 @@ class Posts(Base):
 
 
 def post_pre_save(signal, instance, sender, **kwargs) -> None:
-    instance.slug = slugify(instance.name)
+    instance.slug = slugify(instance.title)
 
 
 signals.pre_save.connect(post_pre_save, sender=Posts)

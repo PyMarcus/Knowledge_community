@@ -28,13 +28,14 @@ class UserRegisterModelForm(forms.ModelForm):
         fields: List[str] = ["name", "email", "password"]
 
 
-class PostForm:
+class PostForm(forms.Form):
     """Content body of site"""
     title: str = forms.CharField(label='Title', max_length=30)
-    content: str = forms.CharField(label='Content', max_length=200)
+    content: str = forms.CharField(widget=forms.Textarea(attrs={'name':'body', 'rows':8, 'cols':5}))
+    image: str = forms.ImageField()
 
 
-class PostModelForm:
+class PostModelForm(forms.ModelForm):
     class Meta:
         model: Posts = Posts
         fields: List[str] = ["title", "image", "content"]
