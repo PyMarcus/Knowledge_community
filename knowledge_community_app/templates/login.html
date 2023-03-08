@@ -1,0 +1,35 @@
+{% load static %}
+{% load bootstrap4 %}
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/brain_icon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <title>Knowledge Community | Login</title>
+
+    {% bootstrap_css %}
+</head>
+<body class="bg-dark">
+
+    {% bootstrap_messages %}
+    <section class="container bg-dark text-light">
+        <form action="{% url 'login' %}" method="post" autocomplete="off">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+            {% buttons %}
+            <button type="submit" class="btn">Login</button>
+            {% endbuttons %}
+        </form>
+
+    </section>
+
+
+
+    {% bootstrap_javascript jquery='full' %}
+</body>
+</html>
