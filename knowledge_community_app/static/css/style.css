@@ -29,11 +29,26 @@
 }
 
 
+.click:hover{
+    cursor: pointer;
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    )!important;
+}
+
+
 @media (min-width: 577px) and (max-width: 768px){
     .personalizated{
         font-size: 1.3rem!important;
         color: white!important;
     }
+
+    .nav-text{
+        font-size: 3.6rem!important;
+    }
+
 }
 
 

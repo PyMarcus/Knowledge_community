@@ -12,29 +12,30 @@ LOGGED: bool = False
 
 
 def index(request: HttpRequest) -> HttpResponse:
-    #if LOGGED:
-        #return render(request, 'index.html')
-    #return redirect('login')
-    posts = Posts.objects.all()
-    context = {
-        "posts": posts
-    }
-    return render(request, 'index.html', context)
+    if LOGGED:
+        posts = Posts.objects.all()
+        context = {
+            "posts": posts
+        }
+        return render(request, 'index.html', context)
+    return redirect('login')
 
 
 def make_post(request: HttpRequest) -> HttpResponse:
-    if request.method == "POST":
-        form = PostModelForm(request.POST, request.FILES)
-        if form.is_valid():
-            messages.success(request, "Thank you to share!")
-            form.save()
-        else:
-            messages.error(request, "Please, check your data!")
-    form2: PostForm = PostForm()
-    context: Dict[str, PostForm | PostModelForm] = {
-        "form": form2
-    }
-    return render(request, 'make_post.html', context)
+    if LOGGED:
+        if request.method == "POST":
+            form = PostModelForm(request.POST, request.FILES)
+            if form.is_valid():
+                messages.success(request, "Thank you to share!")
+                form.save()
+            else:
+                messages.error(request, "Please, check your data!")
+        form2: PostForm = PostForm()
+        context: Dict[str, PostForm | PostModelForm] = {
+            "form": form2
+        }
+        return render(request, 'make_post.html', context)
+    return redirect('login')
 
 
 def login(request: HttpRequest) -> HttpResponse:

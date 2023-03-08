@@ -8,13 +8,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{% static 'images/brain_icon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 
     <title>Knowledge Community | BR</title>
     {% bootstrap_css %}
 </head>
-<body>
+<body class="bg-dark">
 
-    <h1 class="display-1">Ok</h1>
+    <nav class="navbar navbar-expand-md personalizated p-1 navbar-light text-light">
+        <p class="hidden" style="font-size:2rem!important; line-height:2!important;">Knowledge Community</p>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav ml-auto mt-md-2 mt-lg-0 d-flex align-items-center">
+              <li class="nav-item active pr-3">
+                <a class="btn px-5 nav-link text-light btn-outline-light" style="font-size:1.5rem!important;" href="{% url 'make_post' %}">Create a new post</a>
+              </li>
+              <li class="nav-item pr-3">
+                <a class="btn px-5 nav-link text-light btn-outline-light" style="font-size:1.5rem!important;"  href="{% url 'login' %}">Exit</a>
+              </li>
+            </ul>
+          </div>
+    </nav>
+
+    <section class="container-fluid">
+        <section class="row">
+            {% for post in posts %}
+                <section class="card bg-dark text-light col-md-6 p-3 click">
+                    <div class="text-center p-2">
+                    <a class="text-decoration-none text-light" href="#modal{{ post.id }}" data-toggle="modal">
+                        <h1>
+                            {{ post.title }}
+                        </h1>
+                    </a>
+
+                    </div>
+                    <div class="text-center p-2">
+                        <img class="rounded" src="{{ post.image.url }}" alt="{{ post.title }}" width="300px" height="300px">
+                    </div>
+                </section>
+
+                <div class="modal fade bd-example-modal show" id="modal{{ post.id }}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" id="dynamic-content">
+                                            <h2 class="display-4 text-dark text-center">{{ post.title }}</h2>
+                                        <p>
+                                            {{ post.content }}
+                                        </p>
+                                        <img src="{{ post.image.url }}" class="img-fluid" alt="{{ post.title }}">
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            {% endfor %}
+        </section>
+    </section>
 
 
     {% bootstrap_javascript jquery='full' %}
