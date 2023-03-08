@@ -7,4 +7,55 @@
 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
 }
+
+.register_link{
+    font-size: 1.2rem!important;
+    font-weight: bold;
+    color: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)!important;
+}
+
+@media (max-width: 576px){
+    .personalizated{
+        font-size: 1rem!important;
+        color: white!important;
+    }
+
+
+    .hidden{
+        display: none!important;
+    }
+}
+
+
+@media (min-width: 577px) and (max-width: 768px){
+    .personalizated{
+        font-size: 1.3rem!important;
+        color: white!important;
+    }
+}
+
+
+@media (min-width: 769px) and (max-width: 992px){
+    .personalizated{
+        font-size: 1.5rem!important;
+        color: white!important;
+    }
+}
+
+
+@media (min-width: 993px){
+    .personalizated{
+        font-size: 1.8rem!important;
+         color: white!important;
+    }
+
+    input, label{
+        font-size: 1.8rem!important;
+    }
+    label{
+        padding-top: 1rem!important;
+    }
+}
+

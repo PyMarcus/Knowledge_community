@@ -13,20 +13,45 @@
 
     {% bootstrap_css %}
 </head>
-<body class="bg-dark">
+<body class="bg-dark  d-flex justify-content-center ">
 
     {% bootstrap_messages %}
-    <section class="container bg-dark text-light">
-        <form action="{% url 'login' %}" method="post" autocomplete="off">
+    <div class="row w-100">
+        <!--layout-->
+        <section class="container-fluid
+                        personalizated
+                        vh-100
+                        text-light
+                        col-md-6
+                        card
+                        vh-100
+                        col-md-6
+                        hidden
+">
+            <p class="display-1 my-auto p-3">
+                A simple platform to share knowledge.
+            </p>
+        </section>
+
+        <!--form-->
+        <section class="container-fluid bg-dark text-light w-100 card vh-100 col-md-6">
+
+        <form class="form card-body d-flex flex-column align-items-center  mx-auto my-auto w-75"
+              action="{% url 'login' %}"
+              method="post"
+              autocomplete="off">
             {% csrf_token %}
-            {% bootstrap_form form %}
-
-            {% buttons %}
-            <button type="submit" class="btn">Login</button>
-            {% endbuttons %}
+            <div class="my-auto w-100">
+                {% bootstrap_form form %}
+                 {% buttons %}
+                 <button type="submit" class="btn mt-2 personalizated w-100 font-weight-bold">Login</button>
+                {% endbuttons %}
+                <a href="#" class="m-0 d-flex justify-content-end register_link text-white">
+                    Don't you have an account yet? [Free sign up]</a>
+            </div>
         </form>
-
-    </section>
+        </section>
+    </div>
 
 
 
