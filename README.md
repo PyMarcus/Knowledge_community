@@ -21,7 +21,14 @@ A simple platform to share knowledge.
 
 ![image](https://user-images.githubusercontent.com/88283829/223673890-843e873c-5705-4da4-ac3d-7858567b56fc.png)
 
+    /make_post
+  
+  
+![image](https://user-images.githubusercontent.com/88283829/223867612-8687257a-d256-4676-af67-b097fc6c24f0.png)
+
+
 
     /
     
 ![image](https://user-images.githubusercontent.com/88283829/223867402-c37da2c9-fc3a-4348-9021-767c4082dffd.png)
+
