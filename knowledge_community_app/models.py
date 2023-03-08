@@ -1,4 +1,3 @@
-from django import forms
 from django.db import models
 from stdimage.models import StdImageField
 from django.db.models import signals
@@ -23,3 +22,21 @@ class User(Base):
 
     def __repr__(self) -> str:
         return str(self.name)
+
+
+class Posts(Base):
+    """Content body of site"""
+    title: str = models.CharField('Title', max_length=30)
+    image: str = StdImageField('Image', upload_to='images', variations={'thumb': (300, 300)})
+    slug: str = models.SlugField('Slug', max_length=100, blank=True, editable=False)
+    content: str = models.CharField('Content', max_length=200)
+
+    def __repr__(self) -> str:
+        return str(self.title)
+
+
+def post_pre_save(signal, instance, sender, **kwargs) -> None:
+    instance.slug = slugify(instance.name)
+
+
+signals.pre_save.connect(post_pre_save, sender=Posts)
